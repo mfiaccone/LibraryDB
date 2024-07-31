@@ -3,10 +3,10 @@
 <jsp:include page="../include/header.jsp" />
 
 <!-- a page header -->
-<section style="background-color:gray">
+<section class="custom-section">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center">Create Account</h1>
+            <h1 class="text-center raleway-normal" style="color:white;">Create Account</h1>
         </div>
     </div>
 </section>
@@ -21,7 +21,7 @@
                     <!-- Email Input Field -->
                     <div class="row align-items-center justify-content-center pb-3">
                         <div class="col-2">
-                            <label for="emailId" class="col-form-label">Email</label>
+                            <label for="emailId" class="col-form-label" style="color: white;">Email</label>
                         </div>
                         <div class="col-4">
                             <input type="text"
@@ -47,7 +47,7 @@
 
                     <div class="row align-items-center justify-content-center pb-3">
                         <div class="col-2">
-                            <label for="passwordId" class="col-form-label">Password</label>
+                            <label for="passwordId" class="col-form-label" style="color: white;">Password</label>
                         </div>
                         <div class="col-4">
                             <input type="text" id="passwordId" name="password" class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>" value="${form.password}">
@@ -69,7 +69,7 @@
 
                     <div class="row align-items-center justify-content-center pb-3">
                         <div class="col-2">
-                            <label for="nameId" class="col-form-label">Full Name</label>
+                            <label for="nameId" class="col-form-label" style="color: white;">Full Name</label>
                         </div>
                         <div class="col-4">
                             <input type="text" id="nameId" name="name" class="form-control <c:if test="${bindingResult.hasFieldErrors('name')}">is-invalid</c:if>" value="${form.name}">

@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,20 +35,38 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" href="/">Home</a>
                 </li>
-
+                <sec:authorize access="!isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" href="/user/loginPageUrl">Log In</a>
                 </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="/user/create-user">Create Account</a>
+                    </li>
+                </sec:authorize>
 
-                <li class="nav-item">
-                    <a class="nav-link text-white" aria-current="page" href="/user/create-user">Create Account</a>
-                </li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="/login/logout">Log Out</a>
+                    </li>
+                </sec:authorize>
 
-                <li class="nav-item">
-                    <a class="nav-link text-white" aria-current="page" href="/login/logout">Log Out</a>
-                </li>
+                <sec:authorize access="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/dashboard">Admin Dashboard</a>
+                    </li>
+                </sec:authorize>
 
             </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <sec:authorize access="isAuthenticated()">
+                        <li class="nav-item">
+                            <span class="nav-link text-white">Hi, <sec:authentication property="name"/></span>
+                        </li>
+                    </sec:authorize>
+                </ul>
+
+
         </div>
     </div>
 </nav>

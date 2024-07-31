@@ -13,9 +13,18 @@
 
 <section>
     <div class="container">
+
+        <c:if test="${param['error'] eq ''}">
+            <div class="row pt-5 justify-content-center">
+                <div class="col-6">
+                    <div class="alert alert-danger" role="alert">Invalid Username or Password</div>
+                </div>
+            </div>
+        </c:if>
+
         <div class="row pt-5 ">
             <div class="col-12">
-                <form action="/user/create-user" method="post">
+                <form action="/user/loginProcessingURL" method="post">
 
 
                     <!-- Email Input Field -->

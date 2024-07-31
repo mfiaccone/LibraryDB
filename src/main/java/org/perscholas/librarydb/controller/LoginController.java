@@ -1,11 +1,13 @@
 package org.perscholas.librarydb.controller;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.librarydb.database.dao.UserDAO;
 import org.perscholas.librarydb.database.entity.User;
 import org.perscholas.librarydb.database.service.UserService;
 import org.perscholas.librarydb.form.CreateUserFormBean;
+import org.perscholas.librarydb.security.AuthenticatedUserUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthenticatedUserUtilities authenticatedUserUtilities;
+
 
     @GetMapping("/create-user")
     public ModelAndView createUser() {
@@ -43,7 +48,7 @@ public class LoginController {
     }
 
     @PostMapping("/create-user")
-    public ModelAndView createUserSubmit(@Valid CreateUserFormBean form, BindingResult bindingResult) {
+    public ModelAndView createUserSubmit(@Valid CreateUserFormBean form, BindingResult bindingResult, HttpSession session) {
         ModelAndView response = new ModelAndView("auth/create-user");
 
         if (form.getEmail() != null ) {
@@ -65,6 +70,7 @@ public class LoginController {
             // there were no errors so we can create the new user in the database
             userService.createUser(form);
 
+            authenticatedUserUtilities.manualAuthentication(session, form.getEmail(), form.getPassword());
         }
 
         return response;
