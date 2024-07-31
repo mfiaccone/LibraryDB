@@ -1,0 +1,21 @@
+body {
+    background-image: url("https://images.pexels.com/photos/2908984/pexels-photo-2908984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.navbar-custom {
+    border: 1px solid white; /* Thinner border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: transparent; /* Keeps the background transparent */
+}
+
+.custom-section {
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray */
+    padding-bottom: 50px;
+}
+
+.raleway-normal {
+              font-family: "Raleway", sans-serif;
+              font-optical-sizing: auto;
+              font-weight: 200;
+              font-style: normal;
+          }

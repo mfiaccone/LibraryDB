@@ -35,7 +35,7 @@ public class LoginController {
         return response;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/loginPageUrl")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView("login");
 

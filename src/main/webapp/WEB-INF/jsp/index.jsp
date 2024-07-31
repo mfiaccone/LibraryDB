@@ -13,11 +13,13 @@
 
 <html>
 <head>
-    <title>This is our capstone project</title>
+    <link rel="stylesheet" href="/css/global.css">
+
 </head>
 <body>
 
-<h1>This is the header for my capstone project</h1>
+<h1 style="color:white">This is my capstone project</h1>
+
 </body>
 </html>
 
