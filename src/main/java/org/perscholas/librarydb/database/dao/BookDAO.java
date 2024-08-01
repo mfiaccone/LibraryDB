@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookDAO extends JpaRepository<Book, Long> {
 
-
+    Book findByBookId (Integer bookId);
 }
