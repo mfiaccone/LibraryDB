@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" aria-current="page" href="/user/create-user">Create Account</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="/book/search">Book Search</a>
+                    </li>
                 </sec:authorize>
 
                 <sec:authorize access="isAuthenticated()">
