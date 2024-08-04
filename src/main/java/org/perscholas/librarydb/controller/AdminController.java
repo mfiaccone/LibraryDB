@@ -2,18 +2,20 @@ package org.perscholas.librarydb.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.perscholas.librarydb.database.dao.BookDAO;
 import org.perscholas.librarydb.database.dao.UserDAO;
+import org.perscholas.librarydb.database.entity.Book;
 import org.perscholas.librarydb.database.entity.User;
+import org.perscholas.librarydb.database.service.BookService;
+import org.perscholas.librarydb.form.CreateBookFormBean;
 import org.perscholas.librarydb.form.EditUserFormBean;
 import org.perscholas.librarydb.security.AuthenticatedUserUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,6 +30,12 @@ public class AdminController {
     @Autowired
     private UserDAO userDao;
 
+    @Autowired
+    private BookDAO bookDao;
+
+    @Autowired
+    private BookService bookService;
+
     @GetMapping("/dashboard")
     public ModelAndView dashboard() {
         ModelAndView response = new ModelAndView("admin/dashboard");
@@ -35,9 +43,42 @@ public class AdminController {
         return response;
     }
 
-    @GetMapping
+    @GetMapping("/createBook")
+    public ModelAndView createBookForm() {
+        ModelAndView response = new ModelAndView("admin/create-book");
+        response.addObject("form", new CreateBookFormBean());
+        return response;
+    }
+
+    @PostMapping("/createBook")
+    public ModelAndView createBookSubmit(@Valid @ModelAttribute("form") CreateBookFormBean form, BindingResult bindingResult, @RequestParam("cover") MultipartFile cover) {
+        if (bindingResult.hasErrors()) {
+            ModelAndView response = new ModelAndView("admin/create-book");
+            response.addObject("form", form);
+            return response;
+        }
+
+        bookService.createBook(form, cover);
+        return new ModelAndView("redirect:/admin/dashboard");
+    }
+
+    @GetMapping("/editBook")
     public ModelAndView editBook() {
         ModelAndView response = new ModelAndView("admin/edit-book");
+
+
+        return response;
+    }
+
+    @GetMapping("/editBookSearch")
+    public ModelAndView editBookSearch(@RequestParam(required = false) String search) {
+        ModelAndView response = new ModelAndView("admin/search-book");
+
+        List<Book> books = bookDao.searchBooks(search);
+
+        response.addObject("books", books);
+        response.addObject("searchTerm", search);
+
         return response;
     }
 

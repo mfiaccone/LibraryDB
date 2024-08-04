@@ -60,7 +60,7 @@
                         Admin Dashboard
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Edit Books</a>
+                        <a class="dropdown-item" href="/admin/editBookSearch">Edit Books</a>
                         <a class="dropdown-item" href="/admin/userSearch">Edit Users</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a>

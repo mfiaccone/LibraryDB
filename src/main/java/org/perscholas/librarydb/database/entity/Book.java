@@ -26,7 +26,13 @@ public class Book {
     @Column(name = "isbn")
     private String isbn;
 
+    @Column(name= "genre")
+    private String genre;
+
     @Column(name = "available_copies")
     private Integer availableCopies;
+
+    @Column(name= "cover_image_url")
+    private String coverImageUrl;
 
 }
