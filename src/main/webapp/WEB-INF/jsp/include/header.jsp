@@ -42,9 +42,30 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" aria-current="page" href="/user/create-user">Create Account</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="/book/search">Book Search</a>
-                    </li>
+                </sec:authorize>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" href="/book/search">Book Search</a>
+                </li>
+
+<%--                <sec:authorize access="hasAnyAuthority('ADMIN')">--%>
+<%--                    <li class="nav-item">--%>
+<%--                        <a class="nav-link text-white" href="/admin/dashboard">Admin Dashboard</a>--%>
+<%--                    </li>--%>
+<%--                </sec:authorize>--%>
+
+                <sec:authorize access="hasAnyAuthority('ADMIN')">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin Dashboard
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Edit Books</a>
+                        <a class="dropdown-item" href="/admin/userSearch">Edit Users</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a>
+                    </div>
+                </li>
                 </sec:authorize>
 
                 <sec:authorize access="isAuthenticated()">
@@ -52,24 +73,6 @@
                         <a class="nav-link text-white" aria-current="page" href="/login/logout">Log Out</a>
                     </li>
                 </sec:authorize>
-
-                <sec:authorize access="hasAnyAuthority('ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/dashboard">Admin Dashboard</a>
-                    </li>
-                </sec:authorize>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Books
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
 
             </ul>
 
