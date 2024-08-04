@@ -17,7 +17,7 @@
             <div class="col-8 text-center" >
                 <form action="/book">
                     <div class="mb-3">
-                        <input type="text" value="${bookSearch}" class="form-control" id="bookSearch" name="bookSearch" placeholder="Look For A Book"/>
+                        <input type="text" value="${searchTerm}" class="form-control" id="bookSearch" name="search" placeholder="Search For A Book"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>

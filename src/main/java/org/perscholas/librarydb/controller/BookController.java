@@ -39,14 +39,14 @@ public class BookController {
     }
 
     @GetMapping
-    public ModelAndView bookSearchByTitle(@RequestParam(required = false) String bookSearch) {
+    public ModelAndView bookSearch(@RequestParam(required = false) String search) {
 
         ModelAndView response = new ModelAndView("book/search");
 
-        response.addObject("bookSearch", bookSearch);
+        List<Book> books = bookDao.searchBooks(search);
 
-        List<Book> book = bookDao.findByTitle(bookSearch);
-        response.addObject("books", book);
+        response.addObject("books", books);
+        response.addObject("searchTerm", search);
 
         return response;
 
