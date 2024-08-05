@@ -16,25 +16,25 @@
 <!-- Borrowed Books List -->
 <section class="container mt-5">
     <c:choose>
-        <c:when test="${empty bookDetails}">
-            <p>You haven't borrowed any books yet.</p>
+        <c:when test="${empty borrowedBooks}">
+            <p style="color:white">You haven't borrowed any books yet.</p>
         </c:when>
         <c:otherwise>
             <div class="row">
-                <c:forEach items="${bookDetails}" var="bookDetail">
+                <c:forEach items="${borrowedBooks}" var="borrowedBook" varStatus="status">
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">${bookDetail.book.title}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">${bookDetail.book.author}</h6>
+                                <h5 class="card-title">${books[status.index].title}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${books[status.index].author}</h6>
                                 <p class="card-text">
-                                    <strong>ISBN:</strong> ${bookDetail.book.isbn}<br>
-                                    <strong>Genre:</strong> ${bookDetail.book.genre}<br>
-                                    <strong>Borrowed:</strong> <fmt:formatDate value="${bookDetail.borrowDate}" pattern="MM/dd/yyyy"/><br>
-                                    <strong>Due:</strong> <fmt:formatDate value="${bookDetail.dueDate}" pattern="MM/dd/yyyy"/>
+                                    <strong>ISBN:</strong> ${books[status.index].isbn}<br>
+                                    <strong>Genre:</strong> ${books[status.index].genre}<br>
+                                    <strong>Borrowed:</strong> <fmt:formatDate value="${borrowedBook.borrowDate}" pattern="MM/dd/yyyy"/><br>
+                                    <strong>Due:</strong> <fmt:formatDate value="${borrowedBook.dueDate}" pattern="MM/dd/yyyy"/>
                                 </p>
                                 <form action="/user/return" method="post">
-                                    <input type="hidden" name="borrowId" value="${bookDetail.borrowId}">
+                                    <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
                                     <button type="submit" class="btn btn-primary">Return Book</button>
                                 </form>
                             </div>
@@ -45,7 +45,6 @@
         </c:otherwise>
     </c:choose>
 </section>
-
 
 
 

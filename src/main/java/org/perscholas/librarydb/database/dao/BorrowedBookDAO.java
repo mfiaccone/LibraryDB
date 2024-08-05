@@ -10,5 +10,5 @@ public interface BorrowedBookDAO extends JpaRepository<BorrowedBook, Long> {
     List<BorrowedBook> findByUserId(Integer userId);
 
     BorrowedBook findByBorrowId(Integer borrowId);
-    
+
 }
