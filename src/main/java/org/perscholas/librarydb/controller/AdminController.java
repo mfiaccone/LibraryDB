@@ -8,6 +8,7 @@ import org.perscholas.librarydb.database.entity.Book;
 import org.perscholas.librarydb.database.entity.User;
 import org.perscholas.librarydb.database.service.BookService;
 import org.perscholas.librarydb.form.CreateBookFormBean;
+import org.perscholas.librarydb.form.CreateUserFormBean;
 import org.perscholas.librarydb.form.EditUserFormBean;
 import org.perscholas.librarydb.security.AuthenticatedUserUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,47 @@ public class AdminController {
     }
 
     @GetMapping("/editBook")
-    public ModelAndView editBook() {
+    public ModelAndView editBook(@RequestParam Integer bookId) {
         ModelAndView response = new ModelAndView("admin/edit-book");
 
+        Book book = bookDao.findByBookId(bookId);
 
+        if (book != null) {
+            CreateBookFormBean form = new CreateBookFormBean();
+            form.setBookId(book.getBookId());
+            form.setTitle(book.getTitle());
+            form.setAuthor(book.getAuthor());
+            form.setIsbn(book.getIsbn());
+            form.setGenre(book.getGenre());
+            form.setAvailableCopies(book.getAvailableCopies());
+
+            response.addObject("form", form);
+            response.addObject("book", book);
+        } else {
+            log.warn("User with id {} not found", bookId);
+        }
+        return response;
+    }
+
+    @PostMapping("/editBook")
+    public ModelAndView editBookSubmit(@Valid CreateBookFormBean form, BindingResult bindingResult) {
+        ModelAndView response = new ModelAndView("admin/edit-book");
+
+        if (bindingResult.hasErrors()) {
+            response.addObject("form", form);
+            return response;
+        }
+
+        Book book = bookDao.findByBookId(form.getBookId());
+        if (book != null) {
+            book.setTitle(form.getTitle());
+            book.setAuthor(form.getAuthor());
+            book.setIsbn(form.getIsbn());
+            book.setGenre(form.getGenre());
+            book.setAvailableCopies(form.getAvailableCopies());
+            bookDao.save(book);
+            response.setViewName("redirect:/book/detail?bookId=" + book.getBookId());
+        }
         return response;
     }
 
@@ -75,6 +113,18 @@ public class AdminController {
         ModelAndView response = new ModelAndView("admin/search-book");
 
         List<Book> books = bookDao.searchBooks(search);
+
+        log.info("Search term: '{}'", search);
+        log.info("Books list is null: {}", (books == null));
+        log.info("Books list size: {}", (books != null ? books.size() : "N/A"));
+
+        if (books != null && !books.isEmpty()) {
+            for (Book book : books) {
+                log.info("Book: id={}, title={}", book.getBookId(), book.getTitle());
+            }
+        } else {
+            log.info("No books found or books list is empty");
+        }
 
         response.addObject("books", books);
         response.addObject("searchTerm", search);

@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row justify-content-center pt-5 pb-3">
             <div class="col-8 text-center" >
-                <form action="/book">
+                <form action="/admin/editBookSearch">
                     <div class="mb-3">
                         <input type="text" value="${searchTerm}" class="form-control" id="bookSearch" name="search" placeholder="Search For A Book"/>
                     </div>
@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row pt-5">
             <div class="col-12">
-                <h2 class="text-center raleway-normal" style="color: white;">Books Found (${book.size()})</h2>
+                <h2 class="text-center raleway-normal" style="color: white;">Books Found (${books.size()})</h2>
             </div>
         </div>
     </div>
@@ -52,13 +52,25 @@
                         <td style="color: white;">${book.isbn}</td>
                         <td style="color: white;">${book.availableCopies}</td>
                         <td style="color: white;"><a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}">View Details</a></td>
-                        <td style="color: white;"><a href="admin/editBook?search=${book.name}">Edit</a></td>
+                        <td style="color: white;"><a href="${pageContext.request.contextPath}/admin/editBook?bookId=${book.bookId}">Edit</a></td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
     </div>
 </section>
+
+<p>Search Term: ${searchTerm}</p>
+<p>Books attribute is null: ${books == null}</p>
+<p>Number of books: ${books.size()}</p>
+<p>First book (if exists): ${books[0].title}</p>
+
+<c:if test="${not empty books}">
+    <p>Books is not empty</p>
+</c:if>
+<c:if test="${empty books}">
+    <p>Books is empty</p>
+</c:if>
 
 
 
