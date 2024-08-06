@@ -49,7 +49,10 @@
                         </c:forEach>
                     </td>
                 </tr>
-
+                <tr>
+                    <td>Image</td>
+                    <td><img src="${book.coverImageUrl}"/></td>
+                </tr>
             </table>
         </div>
 

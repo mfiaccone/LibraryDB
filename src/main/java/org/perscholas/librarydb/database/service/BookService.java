@@ -36,7 +36,7 @@ public class BookService {
             log.error("Unable to finish reading file", e);
         }
 
-        String url = "/pub/images/" + cover.getOriginalFilename();
+        String url = "/pub/image/" + cover.getOriginalFilename();
         book.setCoverImageUrl(url);
 
         bookDao.save(book);

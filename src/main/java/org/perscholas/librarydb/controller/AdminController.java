@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Slf4j
@@ -87,7 +90,7 @@ public class AdminController {
     }
 
     @PostMapping("/editBook")
-    public ModelAndView editBookSubmit(@Valid CreateBookFormBean form, BindingResult bindingResult) {
+    public ModelAndView editBookSubmit(@Valid CreateBookFormBean form, BindingResult bindingResult, MultipartFile cover) {
         ModelAndView response = new ModelAndView("admin/edit-book");
 
         if (bindingResult.hasErrors()) {
@@ -102,6 +105,18 @@ public class AdminController {
             book.setIsbn(form.getIsbn());
             book.setGenre(form.getGenre());
             book.setAvailableCopies(form.getAvailableCopies());
+
+            String saveFilename = "./src/main/webapp/pub/image/" + cover.getOriginalFilename();
+
+            try {
+                Files.copy(cover.getInputStream(), Paths.get(saveFilename), StandardCopyOption.REPLACE_EXISTING);
+            } catch ( Exception e ) {
+                log.error("Unable to finish reading file", e);
+            }
+
+            String url = "/pub/image/" + cover.getOriginalFilename();
+            book.setCoverImageUrl(url);
+
             bookDao.save(book);
             response.setViewName("redirect:/book/detail?bookId=" + book.getBookId());
         }

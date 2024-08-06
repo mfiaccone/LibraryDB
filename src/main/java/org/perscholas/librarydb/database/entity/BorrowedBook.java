@@ -19,10 +19,10 @@ public class BorrowedBook {
     @Column(name = "borrow_id")
     private Integer borrowId;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", insertable=false, updatable=false)
     private Integer userId;
 
-    @Column(name = "book_id")
+    @Column(name = "book_id", insertable=false, updatable=false)
     private Integer bookId;
 
     @Column(name = "borrow_date")
@@ -32,4 +32,12 @@ public class BorrowedBook {
     @Column(name = "due_date")
     @Temporal(TemporalType.DATE)
     private Date dueDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 }

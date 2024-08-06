@@ -25,6 +25,7 @@
                 <c:forEach items="${borrowedBooks}" var="borrowedBook" varStatus="status">
                     <div class="col-md-4 mb-4">
                         <div class="card">
+                            <img src="${pageContext.request.contextPath}${books[status.index].coverImageUrl}" class="card-img-top" alt="Image Coming Soon" >
                             <div class="card-body">
                                 <h5 class="card-title">${books[status.index].title}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">${books[status.index].author}</h6>
@@ -34,11 +35,15 @@
                                     <strong>Borrowed:</strong> <fmt:formatDate value="${borrowedBook.borrowDate}" pattern="MM/dd/yyyy"/><br>
                                     <strong>Due:</strong> <fmt:formatDate value="${borrowedBook.dueDate}" pattern="MM/dd/yyyy"/>
                                 </p>
-                                <form action="/user/return" method="post">
-                                    <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
-                                    <button type="submit" class="btn btn-primary">Return Book</button>
-                                </form>
-                                <button type="submit" class="btn btn-primary"><a href="/review/create?bookId=${book.bookId}">Review Book</a></button>
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between">
+                                        <form action="/user/return" method="post" class="mr-2">
+                                            <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
+                                            <button type="submit" class="btn btn-primary">Return Book</button>
+                                        </form>
+                                        <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-primary">Review Book</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
