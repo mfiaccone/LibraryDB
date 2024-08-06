@@ -36,6 +36,19 @@
                     <td style="font-weight: bolder;">Available Copies:</td>
                     <td>${book.availableCopies}</td>
                 </tr>
+                <tr>
+                    <td style="font-weight: bolder;">Reviews:</td>
+                    <td>
+                        <c:forEach var="review" items="${book.reviews}">
+                            <div>
+                                <strong>Rating:</strong> ${review.rating}/5<br>
+                                <strong>Review:</strong> ${review.reviewText}<br>
+                                <strong>Date:</strong> <fmt:formatDate value="${review.reviewDate}" pattern="dd/MM/yyyy" /><br>
+                                <hr>
+                            </div>
+                        </c:forEach>
+                    </td>
+                </tr>
 
             </table>
         </div>

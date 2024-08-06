@@ -25,6 +25,9 @@ public class BookController {
         ModelAndView response = new ModelAndView("book/detail");
 
         Book book = bookDao.findByBookId(bookId);
+        if (book != null && book.getReviews() != null) {
+            book.getReviews().size(); // initialization of the reviews bc they're lazy
+        }
         response.addObject("book", book);
 
         return response;

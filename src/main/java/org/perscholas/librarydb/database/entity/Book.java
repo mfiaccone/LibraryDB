@@ -3,6 +3,8 @@ package org.perscholas.librarydb.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Entity
@@ -34,5 +36,8 @@ public class Book {
 
     @Column(name= "cover_image_url")
     private String coverImageUrl;
+
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
 }
