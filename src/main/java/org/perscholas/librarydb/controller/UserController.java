@@ -36,20 +36,29 @@ public class UserController {
     private BookDAO bookDao;
 
     @GetMapping("/detail")
-    public ModelAndView detail(@RequestParam Integer id) {
+    public ModelAndView detail(@RequestParam(required=false) Integer id, Principal principal) {
         ModelAndView response = new ModelAndView("user/detail");
 
-        User user = userDao.findById(id);
+        User user = userDao.findByEmailIgnoreCase(principal.getName());
+        if (user == null) {
+            // Handle the case where no user is found
+            return new ModelAndView("redirect:/error");
+        }
         response.addObject("user", user);
 
         return response;
     }
 
     @GetMapping("/bookshelf")
-    public ModelAndView bookshelf(@RequestParam Integer id, HttpSession session) {
+    public ModelAndView bookshelf(Principal principal, HttpSession session) {
         ModelAndView response = new ModelAndView("user/bookshelf");
 
-        User user = userDao.findById(id);
+        User user = userDao.findByEmailIgnoreCase(principal.getName());
+        if (user == null) {
+            // Handle the case where no user is found
+            return new ModelAndView("redirect:/error");
+        }
+
         session.setAttribute("userId", user.getId());
         log.info("Set userId in session: {}", user.getId());
 

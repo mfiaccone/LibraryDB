@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -48,11 +49,6 @@
                     <a class="nav-link text-white" aria-current="page" href="/book/search">Book Search</a>
                 </li>
 
-<%--                <sec:authorize access="hasAnyAuthority('ADMIN')">--%>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link text-white" href="/admin/dashboard">Admin Dashboard</a>--%>
-<%--                    </li>--%>
-<%--                </sec:authorize>--%>
 
                 <sec:authorize access="hasAnyAuthority('ADMIN')">
                 <li class="nav-item dropdown">
@@ -69,6 +65,16 @@
                 </sec:authorize>
 
                 <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/user/bookshelf">My Bookshelf</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/user/detail">My Account</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" aria-current="page" href="/login/logout">Log Out</a>
                     </li>
