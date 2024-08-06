@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -50,6 +51,7 @@ public class UserController {
 
         User user = userDao.findById(id);
         session.setAttribute("userId", user.getId());
+        log.info("Set userId in session: {}", user.getId());
 
         List<BorrowedBook> borrowedBooks = borrowedBookDao.findByUserId(user.getId());
 
@@ -81,28 +83,82 @@ public class UserController {
         return "redirect:/user/bookshelf?id=" + user.getId();
     }
 
-//    @GetMapping("/bookshelf")
-//    public ModelAndView bookshelf(Principal principal) {
-//        ModelAndView response = new ModelAndView("user/bookshelf");
-//
-//        // Get the currently logged-in user
-//        String email = principal.getName();
-//        User user = userDao.findByEmailIgnoreCase(email);
-//
-//        // Fetch borrowed books for the user
-//        List<BorrowedBook> borrowedBooks = borrowedBookDao.findByUserId(user.getId());
-//
-//        // Fetch full book details for each borrowed book
-//        List<Book> books = new ArrayList<>();
-//        for (BorrowedBook borrowedBook : borrowedBooks) {
-//            Book book = bookDao.findByBookId(borrowedBook.getBookId());
-//            books.add(book);
+    @PostMapping("/checkout")
+    public String checkoutBook(@RequestParam Integer bookId, Principal principal) {
+        if (principal == null) {
+            // handle the case where the user is not authenticated
+            return "redirect:/login";
+        }
+
+        String username = principal.getName();
+        User user = userDao.findByEmailIgnoreCase(username);
+
+        Book book = bookDao.findByBookId(bookId);
+
+        if (book != null && book.getAvailableCopies() > 0) {
+            BorrowedBook borrowedBook = new BorrowedBook();
+            borrowedBook.setUserId(user.getId());
+            borrowedBook.setBookId(bookId);
+            borrowedBook.setBorrowDate(new Date());
+            borrowedBook.setDueDate(new Date(System.currentTimeMillis() + 14 * 24 * 60 * 60 * 1000));
+            borrowedBookDao.save(borrowedBook);
+
+            book.setAvailableCopies(book.getAvailableCopies() - 1);
+            bookDao.save(book);
+        }
+
+        return "redirect:/user/bookshelf?id=" + user.getId();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @PostMapping("/checkout")
+//    public String checkoutBook(@RequestParam Integer bookId, HttpSession session) {
+//        System.out.println("Session attributes:");
+//        java.util.Enumeration<String> attributeNames = session.getAttributeNames();
+//        while (attributeNames.hasMoreElements()) {
+//            String attributeName = attributeNames.nextElement();
+//            System.out.println(attributeName + ": " + session.getAttribute(attributeName));
 //        }
 //
-//        response.addObject("user", user);
-//        response.addObject("borrowedBooks", borrowedBooks);
-//        response.addObject("books", books);
+//        // the problem is this below line, something wrong with the casting maybe?
+//        Integer userId = (Integer) session.getAttribute("userId");
+//        log.info("Retrieved userId from session: {}", userId);
 //
-//        return response;
+//
+//        System.out.println("User ID from session: " + userId);
+//        User user = userDao.findById(userId);
+//
+//        Book book = bookDao.findByBookId(bookId);
+//
+//        if (book != null && book.getAvailableCopies() > 0) {
+//            BorrowedBook borrowedBook = new BorrowedBook();
+//            borrowedBook.setUserId(userId);
+//            borrowedBook.setBookId(bookId);
+//            borrowedBook.setBorrowDate(new Date());
+//            borrowedBook.setDueDate(new Date(System.currentTimeMillis() + 14 * 24 * 60 * 60 * 1000));
+//            borrowedBookDao.save(borrowedBook);
+//
+//            book.setAvailableCopies(book.getAvailableCopies() - 1);
+//            bookDao.save(book);
+//
+//        }
+//        return "redirect:/user/bookshelf?id=" + user.getId();
 //    }
+
 }

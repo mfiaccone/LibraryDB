@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row pt-5">
             <div class="col-12">
-                <h2 class="text-center raleway-normal" style="color: white;">Books Found (${book.size()})</h2>
+                <h2 class="text-center raleway-normal" style="color: white;">Books Found (${books.size()})</h2>
             </div>
         </div>
     </div>
@@ -43,6 +43,7 @@
                     <th style="color: white;">Author</th>
                     <th style="color: white;">ISBN</th>
                     <th style="color: white;">Available Copies</th>
+                    <th style="color: white;">Actions</th>
                 </tr>
                 <c:forEach items="${books}" var="book">
                     <tr>
@@ -51,8 +52,15 @@
                         <td style="color: white;">${book.author}</td>
                         <td style="color: white;">${book.isbn}</td>
                         <td style="color: white;">${book.availableCopies}</td>
-                        <td style="color: white;"><a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}">View Details</a></td>
+                        <td style="color: white;">
+                            <a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}" class="btn btn-sm btn-info me-2">View Details</a>
+                            <form action="/user/checkout" method="post" class="d-inline">
+                                <input type="hidden" name="bookId" value="${book.bookId}">
+                                <button type="submit" class="btn btn-sm btn-primary">Checkout</button>
+                            </form>
+                        </td>
                     </tr>
+
                 </c:forEach>
             </table>
         </div>

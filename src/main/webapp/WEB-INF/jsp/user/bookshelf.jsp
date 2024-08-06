@@ -33,7 +33,7 @@
                                     <strong>Borrowed:</strong> <fmt:formatDate value="${borrowedBook.borrowDate}" pattern="MM/dd/yyyy"/><br>
                                     <strong>Due:</strong> <fmt:formatDate value="${borrowedBook.dueDate}" pattern="MM/dd/yyyy"/>
                                 </p>
-                                <form action="/user/return" method="post">
+                                <form action="/user/checkout" method="post">
                                     <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
                                     <button type="submit" class="btn btn-primary">Return Book</button>
                                 </form>
