@@ -1,6 +1,7 @@
 package org.perscholas.librarydb.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.librarydb.database.dao.BookDAO;
 import org.perscholas.librarydb.database.dao.BorrowedBookDAO;
@@ -8,8 +9,11 @@ import org.perscholas.librarydb.database.dao.UserDAO;
 import org.perscholas.librarydb.database.entity.Book;
 import org.perscholas.librarydb.database.entity.BorrowedBook;
 import org.perscholas.librarydb.database.entity.User;
+import org.perscholas.librarydb.form.EditUserFormBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +38,9 @@ public class UserController {
 
     @Autowired
     private BookDAO bookDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/detail")
     public ModelAndView detail(@RequestParam(required=false) Integer id, Principal principal) {
@@ -120,7 +127,44 @@ public class UserController {
     }
 
 
+    @GetMapping("/editUser")
+    public ModelAndView editUser(@RequestParam(required=false) Integer id, Principal principal) {
+        ModelAndView response = new ModelAndView("user/edit-user");
 
+        User user = userDao.findByEmailIgnoreCase(principal.getName());
+
+        if (user != null) {
+            EditUserFormBean form = new EditUserFormBean();
+            form.setId(user.getId());
+            form.setEmail(user.getEmail());
+            form.setName(user.getName());
+
+            response.addObject("form", form);
+        } else {
+            log.warn("User with id {} not found", id);
+        }
+        return response;
+    }
+
+    @PostMapping("/editUser")
+    public ModelAndView editUserSubmit(@Valid EditUserFormBean form, BindingResult bindingResult) {
+        ModelAndView response = new ModelAndView("user/edit-user");
+
+        if (bindingResult.hasErrors()) {
+            response.addObject("form", form);
+            return response;
+        }
+        String encryptedPassword = passwordEncoder.encode(form.getPassword());
+        User user = userDao.findById(form.getId());
+        if (user != null) {
+            user.setEmail(form.getEmail());
+            user.setName(form.getName());
+            user.setPassword(encryptedPassword);
+            userDao.save(user);
+            response.setViewName("redirect:/user/detail");  // Redirect to user search page after successful edit
+        }
+        return response;
+    }
 
 
 

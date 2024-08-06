@@ -38,8 +38,8 @@
                 <td>${user.createDate}</td>
             </tr>
             <tr>
-                <td style="font-weight: bolder;">Go to Bookshelf</td>
-                <td><a href="bookshelf?id=${user.id}">Bookshelf</a></td>
+                <td style="font-weight: bolder;">Actions</td>
+                <td><a href="bookshelf?id=${user.id}">Bookshelf</a>    <a href="editUser">Edit</a></td>
             </tr>
 
         </table>

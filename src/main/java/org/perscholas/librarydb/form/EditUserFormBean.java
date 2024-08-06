@@ -17,4 +17,6 @@ public class EditUserFormBean {
 
     @NotEmpty(message = "Name cannot be empty")
     private String name;
+
+    private String password;
 }
