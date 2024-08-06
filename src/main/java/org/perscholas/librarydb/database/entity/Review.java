@@ -19,10 +19,10 @@ public class Review {
     @Column(name = "review_id")
     private Integer reviewId;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", insertable=false, updatable=false)
     private Integer userId;
 
-    @Column(name = "book_id")
+    @Column(name = "book_id", insertable=false, updatable=false)
     private Integer bookId;
 
     @Column(name = "rating")
@@ -35,4 +35,11 @@ public class Review {
     @Temporal(TemporalType.TIMESTAMP)
     private Date reviewDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
 }

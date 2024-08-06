@@ -38,6 +38,7 @@
                                     <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
                                     <button type="submit" class="btn btn-primary">Return Book</button>
                                 </form>
+                                <button type="submit" class="btn btn-primary"><a href="/review/create?bookId=${book.bookId}">Review Book</a></button>
                             </div>
                         </div>
                     </div>
