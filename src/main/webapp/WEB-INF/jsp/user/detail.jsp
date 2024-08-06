@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td style="font-weight: bolder;">Books Checked Out:</td>
-<%--                <td>${user.isbn}</td> put # of books checked out here later--%>
+                <td>${checkedOutCount}</td>
             </tr>
             <tr>
                 <td style="font-weight: bolder;">Account Created:</td>

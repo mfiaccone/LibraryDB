@@ -51,7 +51,9 @@ public class UserController {
             // Handle the case where no user is found
             return new ModelAndView("redirect:/error");
         }
+        int checkedOutCount = borrowedBookDao.countByUserId(user.getId());
         response.addObject("user", user);
+        response.addObject("checkedOutCount", checkedOutCount);
 
         return response;
     }
