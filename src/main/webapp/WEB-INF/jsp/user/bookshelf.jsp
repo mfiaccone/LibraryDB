@@ -15,6 +15,7 @@
     </div>
 </section>
 
+<body>
 <!-- Borrowed Books List -->
 <section class="container mt-5">
     <c:choose>
@@ -54,8 +55,8 @@
     </c:choose>
 </section>
 
+<script src="src/main/webapp/pub/script/javascript.js"></script>
 
-
-
+</body>
 
 <jsp:include page="../include/footer.jsp" />

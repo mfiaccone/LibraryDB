@@ -6,6 +6,7 @@ import org.perscholas.librarydb.database.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,9 @@ public class BookController {
     @Autowired
     private BookDAO bookDao;
 
-    @GetMapping("/detail")
-    public ModelAndView detail(@RequestParam Integer bookId) {
+
+    @GetMapping("/detail/{bookId}")
+    public ModelAndView detail(@PathVariable Integer bookId) {
         ModelAndView response = new ModelAndView("book/detail");
 
         Book book = bookDao.findByBookId(bookId);

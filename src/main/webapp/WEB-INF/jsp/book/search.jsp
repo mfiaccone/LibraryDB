@@ -64,7 +64,7 @@
                         <td style="color: white;">${book.isbn}</td>
                         <td style="color: white;">${book.availableCopies}</td>
                         <td style="color: white;">
-                            <a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}" class="btn btn-sm btn-info me-2">View Details</a>
+                            <a href="${pageContext.request.contextPath}/book/detail/${book.bookId}" class="btn btn-sm btn-info me-2">View Details</a>
                             <form action="/user/checkout" method="post" class="d-inline">
                                 <input type="hidden" name="bookId" value="${book.bookId}">
                                 <button type="submit" class="btn btn-sm btn-primary">Checkout</button>
