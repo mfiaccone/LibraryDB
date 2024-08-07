@@ -19,6 +19,17 @@
                     <div class="mb-3">
                         <input type="text" value="${searchTerm}" class="form-control" id="bookSearch" name="search" placeholder="Search For A Book"/>
                     </div>
+                    <select class="form-select" aria-label="Default select example" name="genre">
+                        <option selected>Or Select A Genre</option>
+                        <option value="Fiction" ${selectedGenre == 'Fiction' ? 'selected' : ''}>Fiction</option>
+                        <option value="Classic" ${selectedGenre == 'Classic' ? 'selected' : ''}>Classic</option>
+                        <option value="Fantasy" ${selectedGenre == 'Fantasy' ? 'selected' : ''}>Fantasy</option>
+                        <option value="Dystopian Fiction" ${selectedGenre == 'Dystopian Fiction' ? 'selected' : ''}>Dystopian Fiction</option>
+                        <option value="Science Fiction" ${selectedGenre == 'Science Fiction' ? 'selected' : ''}>Science Fiction</option>
+                        <option value="Thriller" ${selectedGenre == 'Thriller' ? 'selected' : ''}>Thriller</option>
+                        <option value="Historical Fiction" ${selectedGenre == 'Historical Fiction' ? 'selected' : ''}>Historical Fiction</option>
+                        <option value="Romance" ${selectedGenre == 'Romance' ? 'selected' : ''}>Romance</option>
+                    </select>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>
             </div>
