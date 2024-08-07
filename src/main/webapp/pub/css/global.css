@@ -13,6 +13,11 @@ body {
     padding-bottom: 50px;
 }
 
+.custom-section-darker {
+    background-color: rgba(128, 128, 128, 0.7);
+    padding-bottom: 50px;
+}
+
 .raleway-normal {
               font-family: "Raleway", sans-serif;
               font-optical-sizing: auto;
@@ -20,3 +25,11 @@ body {
               font-style: normal;
               font-color: white;
           }
+
+.raleway-bold {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-color: white;
+}

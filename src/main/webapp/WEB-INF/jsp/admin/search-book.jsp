@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <input type="text" value="${searchTerm}" class="form-control" id="bookSearch" name="search" placeholder="Search For A Book"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-light">Search</button>
                 </form>
             </div>
         </div>
@@ -34,9 +34,10 @@
             </div>
         </div>
     </div>
-    <div class="row raleway-normal custom-section">
+
+    <div class="row raleway-bold custom-section-darker">
         <div class="col-12">
-            <table class="table">
+            <table class="table" style="max-width: 80%; margin: auto;">
                 <tr>
                     <th style="color: white;">Book Id</th>
                     <th style="color: white;">Title</th>
@@ -51,8 +52,10 @@
                         <td style="color: white;">${book.author}</td>
                         <td style="color: white;">${book.isbn}</td>
                         <td style="color: white;">${book.availableCopies}</td>
-                        <td style="color: white;"><a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}">View Details</a></td>
-                        <td style="color: white;"><a href="${pageContext.request.contextPath}/admin/editBook?bookId=${book.bookId}">Edit</a></td>
+                        <td><a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}"><button type="button" class="btn btn-light">View Details</button></a></td>
+                        <td><a href="${pageContext.request.contextPath}/admin/editBook?bookId=${book.bookId}"><button type="button" class="btn btn-light">Edit</button></a></td>
+<%--                        <td style="color: white;"><a href="${pageContext.request.contextPath}/book/detail?bookId=${book.bookId}">View Details</a></td>--%>
+<%--                        <td style="color: white;"><a href="${pageContext.request.contextPath}/admin/editBook?bookId=${book.bookId}">Edit</a></td>--%>
                     </tr>
                 </c:forEach>
             </table>

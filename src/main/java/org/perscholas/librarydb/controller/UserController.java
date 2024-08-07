@@ -102,7 +102,7 @@ public class UserController {
     }
 
     @PostMapping("/checkout")
-    public String checkoutBook(@RequestParam Integer bookId, Principal principal) {
+    public String checkoutBook(@RequestParam(required = false) Integer bookId, Principal principal) {
         if (principal == null) {
             // handle the case where the user is not authenticated
             return "redirect:/login";
@@ -112,11 +112,13 @@ public class UserController {
         User user = userDao.findByEmailIgnoreCase(username);
 
         Book book = bookDao.findByBookId(bookId);
+        log.info("Book found: {}", book);
 
         if (book != null && book.getAvailableCopies() > 0) {
             BorrowedBook borrowedBook = new BorrowedBook();
-            borrowedBook.setUserId(user.getId());
-            borrowedBook.setBookId(bookId);
+            borrowedBook.setUser(user);
+            borrowedBook.setBook(book);
+
             borrowedBook.setBorrowDate(new Date());
             borrowedBook.setDueDate(new Date(System.currentTimeMillis() + 14 * 24 * 60 * 60 * 1000));
             borrowedBookDao.save(borrowedBook);
@@ -127,6 +129,7 @@ public class UserController {
 
         return "redirect:/user/bookshelf?id=" + user.getId();
     }
+
 
 
     @GetMapping("/editUser")
