@@ -47,18 +47,31 @@ public class BookController {
 
         ModelAndView response = new ModelAndView("book/search");
 
-//        List<Book> books = bookDao.searchBooks(search);
-
         List<Book> books;
-        if (search != null && !search.isEmpty() && genre != null && !genre.isEmpty()) {
+
+        // Trim search and genre, and set to null if they're empty or just whitespace
+        search = (search != null) ? search.trim() : null;
+        genre = (genre != null && !genre.equals("Or Select A Genre")) ? genre.trim() : null;
+
+        if (search != null && genre != null) {
+
             books = bookDao.searchBooksByTitleAndGenre(search, genre);
-        } else if (search != null && !search.isEmpty()) {
+        } else if (search != null) {
+
             books = bookDao.searchBooks(search);
-        } else if (genre != null && !genre.isEmpty()) {
+        } else if (genre != null) {
+
             books = bookDao.searchByGenre(genre);
         } else {
-            books = new ArrayList<>(); // to make sure books is never null and avoid null pointer
+            // Neither search nor valid genre is provided
+            books = new ArrayList<>(); // this is to avoid book being null and cause null pointer
         }
+
+
+        // this is for the lambda/stream/logging requirement
+        books.stream().forEach(book -> {
+            log.debug("Book: {}", book.getTitle());
+        });
 
         response.addObject("books", books);
         response.addObject("searchTerm", search);
