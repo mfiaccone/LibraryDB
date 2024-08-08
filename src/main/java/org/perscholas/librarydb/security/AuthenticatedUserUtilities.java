@@ -60,4 +60,14 @@ public class AuthenticatedUserUtilities {
         sc.setAuthentication(result);
         session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, sc);
     }
+
+    public boolean isAuthenticated() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            return false;
+        }
+
+        return (authentication != null && authentication.isAuthenticated());
+    }
+
 }

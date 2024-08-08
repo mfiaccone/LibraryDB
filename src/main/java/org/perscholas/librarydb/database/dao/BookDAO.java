@@ -10,22 +10,13 @@ public interface BookDAO extends JpaRepository<Book, Long> {
 
     Book findByBookId (Integer bookId);
 
-//    @Query("select b from Book b where b.title like concat('%', :title, '%')")
-//    List<Book> findByTitle (String title);
-//
-//    @Query("select b from Book b where b.author like concat('%', :author, '%')")
-//    List<Book> findByAuthor(String author);
-//
-//    @Query("select b from Book b where b.isbn = :isbn")
-//    List<Book> findByIsbn(String isbn);
-
     @Query("select b from Book b where " +
             "b.title like concat('%', :search, '%') or " +
             "b.isbn = :search or " +
             "b.author like concat('%', :search, '%')")
     List<Book> searchBooks(String search);
 
-    @Query("select b from Book b where b.genre = :search")
+    @Query(value = "SELECT * FROM book WHERE genre = :search", nativeQuery = true)
     List<Book> searchByGenre(String search);
 
     @Query("select b from Book b where " +

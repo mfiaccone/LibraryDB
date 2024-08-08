@@ -25,14 +25,46 @@
 <%--                    <input type="hidden" name="reviewDate" value="${form.reviewDate}">--%>
 
                     <%--Star Rating Input Field--%>
-                    <select class="form-select" aria-label="Default select example" name="rating">
-                        <option selected>Select A Star Rating</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
-                    </select>
+<%--                    <select class="form-select" aria-label="Default select example" name="rating">--%>
+<%--                        <option selected>Select A Star Rating</option>--%>
+<%--                        <option value="1">One</option>--%>
+<%--                        <option value="2">Two</option>--%>
+<%--                        <option value="3">Three</option>--%>
+<%--                        <option value="4">Four</option>--%>
+<%--                        <option value="5">Five</option>--%>
+<%--                    </select>--%>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="oneStar" value="1">
+                        <label class="form-check-label" for="oneStar">
+                            <i class="fa-regular fa-star gradient-icon"></i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="twoStar" value="2">
+                        <label class="form-check-label" for="twoStar">
+                            <i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="threeStar" value="3">
+                        <label class="form-check-label" for="threeStar">
+                            <i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="fourStar" value="4">
+                        <label class="form-check-label" for="fourStar">
+                            <i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="fiveStar" value="5">
+                        <label class="form-check-label" for="fiveStar">
+                            <i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i><i class="fa-regular fa-star gradient-icon"></i>
+                        </label>
+                    </div>
+
 
                     <%--Review Body Input Field--%>
                     <div class="row align-items-center justify-content-center pb-3">

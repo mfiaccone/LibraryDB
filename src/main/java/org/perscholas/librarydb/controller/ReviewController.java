@@ -77,7 +77,7 @@ public class ReviewController {
 
         reviewDao.save(review);
 
-        return new ModelAndView("redirect:/book/detail?bookId=" + form.getBookId());
+        return new ModelAndView("redirect:/book/detail/" + book.getBookId());
     }
 
 }

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @GetMapping("/")
-    public ModelAndView index() {
+    public ModelAndView index() throws Exception {
         ModelAndView response = new ModelAndView("index");
 
         return response;
