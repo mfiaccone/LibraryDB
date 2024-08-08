@@ -118,7 +118,7 @@ public class AdminController {
             book.setCoverImageUrl(url);
 
             bookDao.save(book);
-            response.setViewName("redirect:/book/detail?bookId=" + book.getBookId());
+            response.setViewName("redirect:/book/detail/" + book.getBookId());
         }
         return response;
     }

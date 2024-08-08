@@ -41,7 +41,7 @@
                                     <div class="d-flex justify-content-between">
                                         <form action="/user/return" method="post" class="mr-2">
                                             <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
-                                            <button type="submit" class="btn btn-primary">Return Book</button>
+                                            <button type="submit" class="btn btn-primary return-book-button" data-borrow-id="${borrowedBook.borrowId}">Return Book</button>
                                         </form>
                                         <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-primary">Review Book</a>
                                     </div>
@@ -55,7 +55,7 @@
     </c:choose>
 </section>
 
-<script src="src/main/webapp/pub/script/javascript.js"></script>
+<script src="${pageContext.request.contextPath}/pub/script/javascript.js"></script>
 
 </body>
 
