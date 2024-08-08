@@ -42,3 +42,22 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.star {
+    transition: color 0.3s, transform 0.3s;
+}
+
+/* Change to solid on hover */
+.form-check-label:hover .star {
+    font-family: "Font Awesome 6 Free"; /* Ensure it's using Font Awesome solid icons */
+    font-weight: 900; /* This makes it solid */
+    color: gold; /* Change to your desired color */
+    transform: scale(1.1); /* Optional: slightly increase the size */
+}
+
+/* Keep the stars filled after selection */
+.form-check-input:checked ~ .form-check-label .star {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: gold;
+    transform: scale(1.1);
+}

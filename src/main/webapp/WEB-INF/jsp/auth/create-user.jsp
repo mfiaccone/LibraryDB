@@ -20,10 +20,10 @@
 
                     <!-- Email Input Field -->
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2">
+                        <div class="col-2 pe-0">
                             <label for="emailId" class="col-form-label" style="color: white;">Email</label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 ps-1">
                             <input type="text"
                                    id="emailId"
                                    name="email"
@@ -44,12 +44,11 @@
                     </c:if>
 
                     <!-- Password Input Field -->
-
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2">
+                        <div class="col-2 pe-0">
                             <label for="passwordId" class="col-form-label" style="color: white;">Password</label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 ps-1">
                             <input type="text" id="passwordId" name="password" class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>" value="${form.password}">
                         </div>
                     </div>
@@ -66,12 +65,11 @@
                     </c:if>
 
                     <!-- Name Input Field -->
-
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2">
+                        <div class="col-2 pe-0">
                             <label for="nameId" class="col-form-label" style="color: white;">Full Name</label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 ps-1">
                             <input type="text" id="nameId" name="name" class="form-control <c:if test="${bindingResult.hasFieldErrors('name')}">is-invalid</c:if>" value="${form.name}">
                         </div>
                     </div>
@@ -86,6 +84,18 @@
                             </div>
                         </div>
                     </c:if>
+
+                    <!-- Newsletter Signup Checkbox -->
+                    <div class="row align-items-center justify-content-center pb-3">
+                        <div class="col-6 text-center">
+                            <div class="form-check d-flex justify-content-center">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" style="color: white;">
+                                    I want to sign up for newsletter emails!
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="row justify-content-center ">

@@ -43,7 +43,7 @@
                         <c:forEach var="review" items="${book.reviews}">
                             <div>
                                 <strong>Rating:</strong> ${review.rating}/5<br>
-                                <strong>Review:</strong> ${review.reviewText}<br>
+                                <strong>Review:</strong> "${review.reviewText}"<br>
                                 <strong>Date:</strong> <fmt:formatDate value="${review.reviewDate}" pattern="dd/MM/yyyy" /><br>
                                 <hr>
                             </div>
