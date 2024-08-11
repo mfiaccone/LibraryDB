@@ -3,8 +3,10 @@ package org.perscholas.librarydb.controller;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.librarydb.database.dao.BookDAO;
+import org.perscholas.librarydb.database.dao.BorrowedBookDAO;
 import org.perscholas.librarydb.database.dao.UserDAO;
 import org.perscholas.librarydb.database.entity.Book;
+import org.perscholas.librarydb.database.entity.BorrowedBook;
 import org.perscholas.librarydb.database.entity.User;
 import org.perscholas.librarydb.database.service.BookService;
 import org.perscholas.librarydb.form.CreateBookFormBean;
@@ -40,9 +42,15 @@ public class AdminController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private BorrowedBookDAO borrowedBookDao;
+
     @GetMapping("/dashboard")
     public ModelAndView dashboard() {
         ModelAndView response = new ModelAndView("admin/dashboard");
+
+        List<BorrowedBook> borrowedBooks = borrowedBookDao.findAllBorrowedBooks();
+        response.addObject("borrowedBooks", borrowedBooks);
 
         return response;
     }

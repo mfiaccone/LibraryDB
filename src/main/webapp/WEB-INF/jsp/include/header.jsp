@@ -58,13 +58,13 @@
                 <sec:authorize access="hasAnyAuthority('ADMIN')">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin Dashboard
+                        ADMIN
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/admin/editBookSearch">Edit Books</a>
                         <a class="dropdown-item" href="/admin/userSearch">Edit Users</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/admin/dashboard">ADMIN</a>
+                        <a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a>
                     </div>
                 </li>
                 </sec:authorize>

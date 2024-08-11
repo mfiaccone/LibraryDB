@@ -46,7 +46,7 @@
                                                 <div class="d-flex justify-content-between">
                                                     <form action="/user/return" method="post" class="mr-2">
                                                         <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
-                                                        <button type="submit" class="btn btn-outline-secondary">Return Book</button>
+                                                        <button type="submit" class="btn btn-outline-secondary return-book-button">Return Book</button>
                                                     </form>
                                                     <div>
                                                     <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-secondary">Review Book</a>

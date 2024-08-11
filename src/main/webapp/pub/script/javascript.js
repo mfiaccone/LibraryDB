@@ -27,8 +27,8 @@ function areYouSure(borrowId) {
 }
 
 function initializePage() {
-    // Get all the "Return Book" buttons
-    const returnButtons = document.querySelectorAll('.return-book-button');
+
+    const returnForms = document.querySelectorAll('.return-book-form');
 
     // Add the click event listener to each button
     returnButtons.forEach(button => {

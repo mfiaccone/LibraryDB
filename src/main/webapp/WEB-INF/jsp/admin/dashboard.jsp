@@ -1,17 +1,54 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../include/header.jsp" />
 
-<html>
-<head>
-    <link rel="stylesheet" href="/css/global.css">
+<!-- Page header -->
+<section class="custom-section">
+    <div class="container">
+        <div class="row pt-5 pb-5">
+            <h1 class="text-center raleway-normal" style="color:white">BORROWED BOOKS</h1>
+            <h2 class="text-center raleway-normal" style="color:white">Hello, <sec:authentication property="name"/></h2>
+        </div>
+    </div>
+</section>
 
-</head>
-<body>
-
-<h1 style="color:white">This is my admin dashboard</h1>
-
-</body>
-</html>
+<section>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="form-container mx-auto">
+                <table class="table table-bordered table-responsive raleway-normal" style="color:white">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Borrow ID</th>
+                        <th>Book Title</th>
+                        <th>User Name</th>
+                        <th>Borrow Date</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${borrowedBooks}" var="borrowedBook">
+                        <tr>
+                            <td>${borrowedBook.borrowId}</td>
+                            <td>${borrowedBook.book.title}</td>
+                            <td>${borrowedBook.user.name}</td>
+                            <td>${borrowedBook.borrowDate}</td>
+                            <td>${borrowedBook.dueDate}</td>
+                            <td>
+                                <a href="/admin/editBook?bookId=${borrowedBook.book.bookId}" class="btn btn-primary btn-sm">Edit Book</a>
+                                <a href="/admin/editUser?id=${borrowedBook.user.id}" class="btn btn-secondary btn-sm">Edit User</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <jsp:include page="../include/footer.jsp" />
