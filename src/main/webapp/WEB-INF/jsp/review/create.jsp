@@ -16,13 +16,14 @@
     <div class="container">
         <div class="row pt-5 ">
             <div class="col-12">
+                <div class="form-container mx-auto">
                 <form action="/review/create" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                     <input type="hidden" name="bookId" value="${form.bookId}">
 
-                    <div class="row justify-content-center pb-3">
-                        <div class="col-auto">
+                    <div class="row align-items-start pb-3">
+                        <div class="col-md-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="rating" id="oneStar" value="1">
                                 <label class="form-check-label" for="oneStar">
@@ -64,17 +65,19 @@
                                 </label>
                             </div>
                         </div>
+
+<%--                        <div class="row align-items-center justify-content-center pb-3">--%>
+                            <div class="col-8">
+                                <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea" name="reviewText"
+                                          style="height: 150px;" placeholder="Type your review here."></textarea>
+                                </div>
+                            </div>
+<%--                        </div>--%>
                     </div>
 
                     <%--Review Body Input Field--%>
-                    <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-8">
-                            <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea" name="reviewText"
-                                          style="height: 150px;" placeholder="Type your review here."></textarea>
-                            </div>
-                        </div>
-                    </div>
+
 
 
                     <div class="row justify-content-center ">
@@ -83,7 +86,7 @@
                         </div>
                     </div>
                 </form>
-                <p style="color:white">Book ID: ${form.bookId}</p>
+                </div>
             </div>
         </div>
     </div>

@@ -7,11 +7,11 @@ body {
 .navbar-custom {
     border: 1px solid white; /* Thinner border */
     border-radius: 8px; /* Rounded corners */
-    background-color: rgba(128, 128, 128, 0.5); /* Keeps the background transparent */
+    background-color: rgba(43, 27, 28, 0.5); /* Keeps the background transparent */
 }
 
 .custom-section {
-    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray */
+    background-color: rgba(43, 27, 28, 0.5); /* Semi-transparent gray */
     padding-bottom: 50px;
 }
 
@@ -23,9 +23,8 @@ body {
 .raleway-normal {
               font-family: "Raleway", sans-serif;
               font-optical-sizing: auto;
-              font-weight: 200;
+              font-weight: 400;
               font-style: normal;
-              font-color: white;
           }
 
 .raleway-bold {
@@ -33,7 +32,12 @@ body {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-color: white;
+    font-color: #FAE3DD;
+    text-shadow:
+            1px 1px 0 #D4AF37,
+            -1px -1px 0 #D4AF37,
+            1px -1px 0 #D4AF37,
+            -1px 1px 0 #D4AF37;
 }
 
 .gradient-icon {
@@ -60,4 +64,97 @@ body {
     font-weight: 900;
     color: gold;
     transform: scale(1.1);
+}
+
+/*card css*/
+
+.flip-card {
+    perspective: 1000px;
+    height: 500px;
+    border-radius: 15px;
+
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: inherit;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: inherit;
+}
+.flip-card-front {
+    background-color: #f8f9fa;
+    border-radius: inherit;
+    overflow: hidden;
+}
+.flip-card-back {
+    background-color: #F0B07C;
+    color: black;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+.card-img-top {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+
+}
+
+.card-title {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+}
+.card-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.card-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-top: 25px;
+}
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.form-container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Centers the container */
+    padding: 40px; /* Optional: Add padding inside the container */
+    background-color: #6D403D;
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 2px 2px 2px #2B1B1C; /* Optional: Add a shadow for better visual separation */
+}
+
+
+.archivo-black-regular {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #2B1B1C;
+    font-size: 18px;
+}
+
+.merriweather-bold {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
 }

@@ -21,11 +21,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        .navbar-text {
-            color: white;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom raleway-normal">
@@ -36,19 +39,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                    <a class="nav-link text-white" aria-current="page" href="/">HOME</a>
                 </li>
                 <sec:authorize access="!isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link text-white" aria-current="page" href="/user/loginPageUrl">Log In</a>
+                    <a class="nav-link text-white" aria-current="page" href="/user/loginPageUrl">LOG IN</a>
                 </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="/user/create-user">Create Account</a>
+                        <a class="nav-link text-white" aria-current="page" href="/user/create-user">CREATE ACCOUNT</a>
                     </li>
                 </sec:authorize>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" aria-current="page" href="/book/search">Book Search</a>
+                    <a class="nav-link text-white" aria-current="page" href="/book/search">SEARCH</a>
                 </li>
 
 
@@ -61,7 +64,7 @@
                         <a class="dropdown-item" href="/admin/editBookSearch">Edit Books</a>
                         <a class="dropdown-item" href="/admin/userSearch">Edit Users</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a>
+                        <a class="dropdown-item" href="/admin/dashboard">ADMIN</a>
                     </div>
                 </li>
                 </sec:authorize>
@@ -69,7 +72,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My Account
+                            MY ACCOUNT
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/user/bookshelf">My Bookshelf</a>
@@ -78,7 +81,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="/login/logout">Log Out</a>
+                        <a class="nav-link text-white" aria-current="page" href="/login/logout">LOG OUT</a>
                     </li>
                 </sec:authorize>
 
