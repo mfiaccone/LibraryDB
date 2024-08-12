@@ -44,9 +44,9 @@
                                             </p>
                                             <div class="mt-auto">
                                                 <div class="d-flex justify-content-between">
-                                                    <form action="/user/return" method="post" class="mr-2">
+                                                    <form action="/user/return" method="post" class="mr-2 return-book-form">
                                                         <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
-                                                        <button type="submit" class="btn btn-outline-secondary return-book-button" style="font-size: 15px;">Return Book</button>
+                                                        <button type="submit" class="btn btn-outline-secondary" style="font-size: 15px;">Return Book</button>
                                                     </form>
                                                     <div>
                                                     <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-secondary" style="font-size: 15px;">Review Book</a>
