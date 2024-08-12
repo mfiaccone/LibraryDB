@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="row raleway-bold custom-section-darker">
+    <div class="row raleway-bold">
         <div class="col-12">
             <table class="table" style="max-width: 80%; margin: auto;">
                 <tr>
