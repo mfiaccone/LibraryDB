@@ -33,10 +33,10 @@
                                 </div>
                                 <div class="flip-card-back">
                                     <div class="card h-100">
-                                        <div class="card-body d-flex flex-column">
+                                        <div class="card-body d-flex flex-column raleway-normal">
                                             <h5 class="card-title">${books[status.index].title}</h5>
                                             <h6 class="card-subtitle mb-2 text-muted">${books[status.index].author}</h6>
-                                            <p class="card-text">
+                                            <p class="card-text raleway-normal">
                                                 <strong>ISBN:</strong> ${books[status.index].isbn}<br>
                                                 <strong>Genre:</strong> ${books[status.index].genre}<br>
                                                 <strong>Borrowed:</strong> <fmt:formatDate value="${borrowedBook.borrowDate}" pattern="MM/dd/yyyy"/><br>
@@ -46,10 +46,10 @@
                                                 <div class="d-flex justify-content-between">
                                                     <form action="/user/return" method="post" class="mr-2">
                                                         <input type="hidden" name="borrowId" value="${borrowedBook.borrowId}">
-                                                        <button type="submit" class="btn btn-outline-secondary return-book-button">Return Book</button>
+                                                        <button type="submit" class="btn btn-outline-secondary return-book-button" style="font-size: 15px;">Return Book</button>
                                                     </form>
                                                     <div>
-                                                    <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-secondary">Review Book</a>
+                                                    <a href="/review/create?bookId=${books[status.index].bookId}" class="btn btn-outline-secondary" style="font-size: 15px;">Review Book</a>
                                                     </div>
                                                 </div>
                                             </div>
