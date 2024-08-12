@@ -7,16 +7,17 @@
 <section class="custom-section">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center raleway-normal" style="color:white" >USER DETAILS</h1>
+            <h1 class="text-center raleway-normal" style="color:white" >MY ACCOUNT</h1>
             <h2 class="text-center raleway-normal" style="color:white">Hello, <sec:authentication property="name"/></h2>
         </div>
     </div>
+
 </section>
 
 <section>
 
-    <div class="row justify-content-center custom-section">
-        <table class="table table-success table-striped table-bordered table-responsive" style="width: 750pt">
+    <div class="row justify-content-center custom-section" >
+        <table class="table" style="width: 750pt; color: white">
             <tr>
                 <td style="font-weight: bolder;">User ID:</td>
                 <td>${user.id}</td>
@@ -39,7 +40,10 @@
             </tr>
             <tr>
                 <td style="font-weight: bolder;">Actions</td>
-                <td><a href="bookshelf?id=${user.id}">Bookshelf</a>    <a href="editUser">Edit</a></td>
+                <td>
+                    <a href="bookshelf?id=${user.id}" class="btn btn-light me-2">Bookshelf</a>
+                    <a href="editUser" class="btn btn-light">Edit</a>
+                </td>
             </tr>
 
         </table>

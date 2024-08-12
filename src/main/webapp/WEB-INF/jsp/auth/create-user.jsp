@@ -6,22 +6,23 @@
 <section class="custom-section">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center raleway-normal" style="color:white;">Create Account</h1>
+            <h1 class="text-center raleway-bold" style="color:white; font-size: 60px;">CREATE ACCOUNT</h1>
         </div>
     </div>
 </section>
 
 <section>
     <div class="container">
-        <div class="row pt-5 ">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-10">
+                <div class="form-container">
                 <form action="/user/create-user" method="post">
 
 
                     <!-- Email Input Field -->
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2 pe-0">
-                            <label for="emailId" class="col-form-label" style="color: white;">Email</label>
+                        <div class="col-2 pe-4 text-end">
+                            <label for="emailId" class="col-form-label raleway-bold" style="color: white;">Email</label>
                         </div>
                         <div class="col-4 ps-1">
                             <input type="text"
@@ -45,8 +46,8 @@
 
                     <!-- Password Input Field -->
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2 pe-0">
-                            <label for="passwordId" class="col-form-label" style="color: white;">Password</label>
+                        <div class="col-2 pe-4 text-end">
+                            <label for="passwordId" class="col-form-label raleway-bold" style="color: white;">Password</label>
                         </div>
                         <div class="col-4 ps-1">
                             <input type="text" id="passwordId" name="password" class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>" value="${form.password}">
@@ -66,8 +67,8 @@
 
                     <!-- Name Input Field -->
                     <div class="row align-items-center justify-content-center pb-3">
-                        <div class="col-2 pe-0">
-                            <label for="nameId" class="col-form-label" style="color: white;">Full Name</label>
+                        <div class="col-2 pe-4 text-end">
+                            <label for="nameId" class="col-form-label raleway-bold" style="color: white;">Full Name</label>
                         </div>
                         <div class="col-4 ps-1">
                             <input type="text" id="nameId" name="name" class="form-control <c:if test="${bindingResult.hasFieldErrors('name')}">is-invalid</c:if>" value="${form.name}">
@@ -90,7 +91,7 @@
                         <div class="col-6 text-center">
                             <div class="form-check d-flex justify-content-center">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" style="color: white;">
+                                <label class="form-check-label raleway-bold" for="flexCheckDefault" style="color: white;">
                                     I want to sign up for newsletter emails!
                                 </label>
                             </div>
@@ -106,6 +107,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

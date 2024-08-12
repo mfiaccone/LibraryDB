@@ -6,7 +6,7 @@
 <section class="custom-section">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center raleway-normal" style="color:white" >BOOK SEARCH</h1>
+            <h1 class="text-center raleway-bold" style="color:white; font-size: 60px;">BOOK SEARCH</h1>
         </div>
     </div>
 </section>
@@ -30,7 +30,7 @@
                         <option value="Historical Fiction" ${selectedGenre == 'Historical Fiction' ? 'selected' : ''}>Historical Fiction</option>
                         <option value="Romance" ${selectedGenre == 'Romance' ? 'selected' : ''}>Romance</option>
                     </select>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-light">Search</button>
                 </form>
             </div>
         </div>
@@ -38,7 +38,7 @@
 </section>
 
 <section>
-    <div class="container">
+    <div class="container custom-section">
         <div class="row pt-5">
             <div class="col-12">
                 <h2 class="text-center raleway-normal" style="color: white;">Books Found (${books.size()})</h2>
@@ -64,10 +64,10 @@
                         <td style="color: white;">${book.isbn}</td>
                         <td style="color: white;">${book.availableCopies}</td>
                         <td style="color: white;">
-                            <a href="${pageContext.request.contextPath}/book/detail/${book.bookId}" class="btn btn-sm btn-info me-2">View Details</a>
+                            <a href="${pageContext.request.contextPath}/book/detail/${book.bookId}" class="btn btn-sm btn-info me-2 btn-light">View Details</a>
                             <form action="/user/checkout" method="post" class="d-inline">
                                 <input type="hidden" name="bookId" value="${book.bookId}">
-                                <button type="submit" class="btn btn-sm btn-primary">Checkout</button>
+                                <button type="submit" class="btn btn-sm btn-light">Checkout</button>
                             </form>
                         </td>
                     </tr>

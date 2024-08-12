@@ -33,11 +33,7 @@ body {
     font-weight: 500;
     font-style: normal;
     font-color: #FAE3DD;
-    text-shadow:
-            1px 1px 0 #D4AF37,
-            -1px -1px 0 #D4AF37,
-            1px -1px 0 #D4AF37,
-            -1px 1px 0 #D4AF37;
+
 }
 
 .gradient-icon {
@@ -52,7 +48,7 @@ body {
 
 /* Change to solid on hover */
 .form-check-label:hover .star {
-    font-family: "Font Awesome 6 Free"; 
+    font-family: "Font Awesome 6 Free";
     font-weight: 900;
     color: gold;
     transform: scale(1.1);
@@ -174,4 +170,8 @@ body {
     font-weight: 700;
     font-style: normal;
     color: white;
+}
+
+.table {
+    background-color: rgba(109, 64, 61, 0.8);
 }
