@@ -52,10 +52,10 @@ body {
 
 /* Change to solid on hover */
 .form-check-label:hover .star {
-    font-family: "Font Awesome 6 Free"; /* Ensure it's using Font Awesome solid icons */
-    font-weight: 900; /* This makes it solid */
-    color: gold; /* Change to your desired color */
-    transform: scale(1.1); /* Optional: slightly increase the size */
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900;
+    color: gold;
+    transform: scale(1.1);
 }
 
 /* Keep the stars filled after selection */
@@ -136,28 +136,28 @@ body {
 }
 
 .btn {
-    font-size: 0.9rem; /* Smaller font size for buttons */
-    padding: 0.375rem 0.75rem; /* Adjust padding as needed */
+    font-size: 0.9rem;
+    padding: 0.375rem 0.75rem;
 }
 
 
 
 .form-container {
-    max-width: 800px; /* Adjust as needed */
+    max-width: 800px;
     margin: 0 auto; /* Centers the container */
-    padding: 40px; /* Optional: Add padding inside the container */
+    padding: 40px;
     background-color: #6D403D;
-    border-radius: 8px; /* Optional: Add rounded corners */
-    box-shadow: 2px 2px 2px #2B1B1C; /* Optional: Add a shadow for better visual separation */
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px #2B1B1C;
 }
 
 .form-container-two {
-    max-width: 1000px; /* Adjust as needed */
+    max-width: 1000px;
     margin: 0 auto; /* Centers the container */
-    padding: 40px; /* Optional: Add padding inside the container */
+    padding: 40px;
     background-color: #6D403D;
-    border-radius: 8px; /* Optional: Add rounded corners */
-    box-shadow: 2px 2px 2px #2B1B1C; /* Optional: Add a shadow for better visual separation */
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px #2B1B1C;
 }
 
 
